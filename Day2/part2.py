@@ -1,6 +1,5 @@
 
 input = open("Day2/input.txt", "r")
-print(input)
 horizontalPos = 0
 depth = 0
 aim = 0
