@@ -1,4 +1,4 @@
-input = open("Day3\input.txt", "r")
+input = open("Day3/input.txt", "r")
 
 gammaRate = ""
 epsilonRate = ""
@@ -6,13 +6,13 @@ epsilonRate = ""
 powerConsumption = 0
 
 allRows = input.readlines()
-
+rowLength = len(allRows[0]) - 1
 i = 0
 zeroCount = 0
 oneCount = 0
 
-# Loop through each row, five times
-while i < 5:
+# Loop through each row, length of one row times
+while i < rowLength:
     # Get each row
     for rows in allRows:
         digit = rows[i]
