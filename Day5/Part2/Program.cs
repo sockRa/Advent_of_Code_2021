@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using DiagramHelper;
 
-namespace Part1
+namespace Part2
 {
     internal class Program
     {
@@ -12,7 +12,7 @@ namespace Part1
         private static int X2 {get;set;}
         private static int Y1 {get;set;}
         private static int Y2 {get;set;}
-            
+        
         public static void Main(string[] args)
         {
             var input = File.ReadAllLines(@"..\..\..\DiagramHelper\input.txt");
@@ -26,7 +26,7 @@ namespace Part1
             var count = diagram.Map.Cast<int>().Count(i => i >= 2);
             Console.WriteLine(count);
         }
-
+        
         private static void MapToDiagram(Diagram diagram, IEnumerable<string> input)
         {
             foreach (var coordinateRow in input)
@@ -39,11 +39,15 @@ namespace Part1
                 Y2 = int.Parse(coordinateTuple[3]);
 
                 int index;
+                int deltaX;
+                int deltaY;
+                int indexX;
+                int indexY;
                 
                 if (X1 == X2)
                 {
                     index = Y1 > Y2 ? Y2 : Y1;
-                    var deltaY = (Math.Abs(Y1 - Y2)) + index;
+                    deltaY = Math.Abs(Y1 - Y2) + index;
                     
                     for (var column = index; column < deltaY + 1; column++)
                     {
@@ -53,11 +57,54 @@ namespace Part1
                 else if (Y1 == Y2)
                 {
                     index = X1 > X2 ? X2 : X1;
-                    var deltaX = (Math.Abs(X1 - X2)) + index;
+                    deltaX = Math.Abs(X1 - X2) + index;
                     
                     for (var row = index; row < deltaX + 1; row++)
                     {
                         diagram.Map[row, Y1]++;
+                    }
+                }
+                else if (X1 > X2)
+                {
+                    indexX = X1 > X2 ? X1 : X2;
+                    indexY = Y1;
+                    
+                    deltaX = Math.Abs(X1 - X2 - indexX);
+                    
+                    for (var x = indexX; x >= deltaX; x--)
+                    {
+                        diagram.Map[x, indexY]++;
+
+                        if (Y1 > Y2)
+                        {
+                            indexY--;
+                        }
+                        else
+                        {
+                            indexY++;
+                        }
+                        
+                    }
+                }
+                else if (X1 < X2)
+                {
+                    indexX = X1 > X2 ? X2 : X1;
+                    indexY = Y1;
+
+                    deltaX = Math.Abs(X1 - X2 - indexX);
+
+                    for (var x = indexX; x < deltaX + 1; x++)
+                    {
+                        diagram.Map[x, indexY]++;
+
+                        if (Y1 > Y2)
+                        {
+                            indexY--;
+                        }
+                        else
+                        {
+                            indexY++;
+                        }
                     }
                 }
             }

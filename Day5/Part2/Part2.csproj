@@ -4,11 +4,11 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{A175B06C-1736-4DDA-8168-9AA2D2B322A7}</ProjectGuid>
+        <ProjectGuid>{DA1A0237-F768-4BFD-ABD0-8B98BFE7F858}</ProjectGuid>
         <OutputType>Exe</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Part1</RootNamespace>
-        <AssemblyName>Part1</AssemblyName>
+        <RootNamespace>Part2</RootNamespace>
+        <AssemblyName>Part2</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
     </PropertyGroup>

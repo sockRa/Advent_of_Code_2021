@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part1", "Part1\Part1.csproj", "{A175B06C-1736-4DDA-8168-9AA2D2B322A7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Part2", "Part2\Part2.csproj", "{DA1A0237-F768-4BFD-ABD0-8B98BFE7F858}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiagramHelper", "DiagramHelper\DiagramHelper.csproj", "{2DCC44C2-B565-4B88-8A58-648A5D3CE95D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +16,13 @@ Global
 		{A175B06C-1736-4DDA-8168-9AA2D2B322A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A175B06C-1736-4DDA-8168-9AA2D2B322A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A175B06C-1736-4DDA-8168-9AA2D2B322A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA1A0237-F768-4BFD-ABD0-8B98BFE7F858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA1A0237-F768-4BFD-ABD0-8B98BFE7F858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA1A0237-F768-4BFD-ABD0-8B98BFE7F858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA1A0237-F768-4BFD-ABD0-8B98BFE7F858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DCC44C2-B565-4B88-8A58-648A5D3CE95D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DCC44C2-B565-4B88-8A58-648A5D3CE95D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DCC44C2-B565-4B88-8A58-648A5D3CE95D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DCC44C2-B565-4B88-8A58-648A5D3CE95D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
