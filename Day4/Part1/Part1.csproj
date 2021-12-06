@@ -4,10 +4,10 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{D85D25A4-ACE9-4D99-B849-931C871462F2}</ProjectGuid>
+        <ProjectGuid>{C04D3899-A0DE-451E-86F6-1A999D306FF6}</ProjectGuid>
         <OutputType>Exe</OutputType>
         <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>Day4</RootNamespace>
+        <RootNamespace>Part1</RootNamespace>
         <AssemblyName>Part1</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
@@ -43,7 +43,6 @@
     </ItemGroup>
     <ItemGroup>
       <Content Include="input.txt" />
-      <Content Include="testInput.txt" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

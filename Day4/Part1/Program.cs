@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Day4
+namespace Part1
 {
     internal class BingoBoard
     {
@@ -23,10 +23,8 @@ namespace Day4
             var winningBoard = CheckBoards(bingoBoards, bingoNumbers);
             
             Console.WriteLine(CalculateSum(winningBoard));
-            
-            
         }
-
+        
         private static int CalculateSum(BingoBoard winningBoard)
         {
             var sum = 0;
