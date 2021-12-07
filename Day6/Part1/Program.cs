@@ -10,35 +10,32 @@ namespace Part1
         public static void Main(string[] args)
         {
             var input = File.ReadAllLines(@"..\..\input.txt").First().Split(',');
-            var fish = input.Select(timer => new Lanternfish(int.Parse(timer))).ToList();
-
-            Simulate(fish, 80);
-        }
-
-        private static void Simulate(ICollection<Lanternfish> fishes, int days)
-        {
-            var dayCount = 0;
             
-            while (dayCount != days)
+            const int days = 256;
+            const int maxAge = 8;
+            var fishAge = new long[maxAge + 1];
+            
+            //Initial age
+            foreach (var age in input)
             {
-                var currentFishStock = new List<Lanternfish>(fishes);
+                var longAge = long.Parse(age);
+                fishAge[longAge]++;
+            }
+
+            for (var day = 1; day <= days; day++)
+            {
+                var zeroAge = fishAge[0];
                 
-                foreach (var fish in currentFishStock)
+                for (var i = 1; i < fishAge.Length; i++)
                 {
-                    if (fish.internalTimer != 0)
-                    {
-                        fish.internalTimer--;
-                        continue;
-                    }
-
-                    fish.internalTimer = 6;
-                    fishes.Add(new Lanternfish(8));
+                    fishAge[i - 1] = fishAge[i];
                 }
-
-                dayCount++;
+                
+                fishAge[6] += zeroAge;
+                fishAge[8] = zeroAge;
             }
             
-            Console.WriteLine(fishes.Count);
+            Console.WriteLine(fishAge.Sum());
         }
     }
 }
