@@ -13,12 +13,50 @@ namespace Part1
             var input = File.ReadAllLines(@"..\..\input.txt").First().Split(',');
             var crabPositions = Array.ConvertAll(input, int.Parse);
             
-            var min = crabPositions.Min();
-            var max = crabPositions.Max();
+            Console.WriteLine($"Part one: {SolvePartOne(crabPositions)}");
+            Console.WriteLine($"Part two: {SolvePartTwo(crabPositions)}");
 
+        }
+
+        private static int SolvePartTwo(int[] crabPositions)
+        {
             var currentFuelCost = 0;
             var cheapestFuelCost = int.MaxValue;
+            
+            var min = crabPositions.Min();
+            var max = crabPositions.Max();
+            
+            for (var i = min; i < max; i++)
+            {
+                foreach (var position in crabPositions)
+                {
+                    var horizontalCount = Math.Abs(position - i);
+                    
+                    for (var cost = 1; cost <= horizontalCount; cost++)
+                    {
+                        currentFuelCost += cost;
+                    }
+                }
+                
+                if (currentFuelCost < cheapestFuelCost)
+                {
+                    cheapestFuelCost = currentFuelCost;
+                }
 
+                currentFuelCost = 0;
+            }
+
+            return cheapestFuelCost;
+        }
+
+        private static int SolvePartOne(int[] crabPositions)
+        {
+            var currentFuelCost = 0;
+            var cheapestFuelCost = int.MaxValue;
+            
+            var min = crabPositions.Min();
+            var max = crabPositions.Max();
+            
             for (var i = min; i < max; i++)
             {
                 foreach (var position in crabPositions)
@@ -33,8 +71,8 @@ namespace Part1
 
                 currentFuelCost = 0;
             }
-            
-            Console.WriteLine(cheapestFuelCost);
+
+            return cheapestFuelCost;
         }
     }
 }
