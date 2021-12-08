@@ -20,7 +20,7 @@ namespace Part1
         
         public static void Main(string[] args)
         {
-            var inputRow = File.ReadAllLines(@"..\..\testInput.txt");
+            var inputRow = File.ReadAllLines(@"..\..\input.txt");
             
             var signalPatterns = new List<string>();
             var outputValue = new List<string>();
