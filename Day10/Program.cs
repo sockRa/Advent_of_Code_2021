@@ -15,28 +15,93 @@ namespace Day10
             { '>', 25137 },
         };
 
+        private static readonly List<char> OpeningChars = new List<char>
+        {
+            '(',
+            '[',
+            '{',
+            '<'
+        };
+
+        private static readonly Dictionary<char, long> AutoCompleteScoreBoard = new Dictionary<char, long>
+        {
+            { '(', 1 },
+            { '[', 2 },
+            { '{', 3 },
+            { '<', 4 },
+        };
+
         public static void Main(string[] args)
         {
             var input = File.ReadAllLines(@"..\..\input.txt");
 
             Console.WriteLine($"Part one: {SolvePartOne(input)}");
+            Console.WriteLine($"Part two: {SolvePartTwo(input)}");
+        }
+
+        private static long SolvePartTwo(IEnumerable<string> input)
+        {
+            var stack = new Stack<char>();
+            var scores = new List<long>();
+
+            foreach (var line in input)
+            {
+                foreach (var c in line)
+                {
+                    if (OpeningChars.Contains(c))
+                    {
+                        stack.Push(c);
+                    }
+                    else
+                    {
+                        if (Math.Abs(c - stack.Peek()) > 2)
+                        {
+                            // Line is corrupt
+                            stack.Clear();
+                            break;
+                        }
+
+                        stack.Pop();
+                    }
+                }
+
+                // Skip counting points if stack is empty.
+                if (!stack.Any())
+                {
+                    continue;
+                }
+
+                long score = 0;
+
+                foreach (var c in stack)
+                {
+                    score = score * 5 + AutoCompleteScoreBoard.First(x => x.Key == c).Value;
+                }
+
+                stack.Clear();
+                scores.Add(score);
+            }
+
+            scores.Sort();
+
+            return scores[scores.Count / 2];
         }
 
         private static int SolvePartOne(IEnumerable<string> input)
         {
             var finalScore = 0;
-            var openingSyntax = new Stack<char>();
+            var stack = new Stack<char>();
             foreach (var line in input)
             {
                 foreach (var c in line)
                 {
-                    if (c == '(' || c == '[' || c == '{' || c == '<')
+                    if (OpeningChars.Contains(c))
                     {
-                        openingSyntax.Push(c);
+                        stack.Push(c);
                     }
                     else
                     {
-                        var score = CheckSyntax(c, openingSyntax);
+                        var score = CheckSyntax(c, stack);
                         if (score == 0) continue;
 
                         // Something is not right
